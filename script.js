@@ -46,7 +46,15 @@ document.getElementById('submitBtn').addEventListener('click', function() {
         }
     }
 
-    // Show result in modal
-    document.getElementById('resultText').innerText = `The calculated tax is ₹${tax.toLocaleString()}`;
-    $('#resultModal').modal('show');
+    // Display calculated tax
+    const taxResult = document.createElement('div');
+    taxResult.classList.add('tax-result');
+    taxResult.innerHTML = `
+        <h2>Calculated Tax</h2>
+        <div class="form-group">
+            <label>Tax Amount:</label>
+            <input type="text" class="form-control" value="₹${tax.toLocaleString()}" readonly>
+        </div>
+    `;
+    document.body.appendChild(taxResult);
 });
